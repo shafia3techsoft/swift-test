@@ -18,12 +18,6 @@ struct CircleShadowButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
-//                .font(.system(size: size * 0.5))
-//                .foregroundColor(iconColor)
-//                .frame(width: size, height: size)
-//                .background(backgroundColor)
-//                .clipShape(Circle())
-//                .shadow(radius: 4)
                 .font(.system(size: 24))
                 .foregroundColor(.white)
                 .background(Defs.darkPurpleColor)

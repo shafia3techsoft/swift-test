@@ -11,15 +11,18 @@ struct CalculatorView: View {
     @State private var input1 = ""
     @State private var input2 = ""
     @State private var result: Int?
+//    @State private var divResult: Float?
 
     var body: some View {
-        Form {
-            TextField("Enter first number", text: $input1)
-                .keyboardType(.numberPad)
-            TextField("Enter second number", text: $input2)
-                .keyboardType(.numberPad)
-
-            HStack {                
+        VStack{
+            Form {
+                TextField("Enter first number", text: $input1)
+                    .keyboardType(.numberPad)
+                TextField("Enter second number", text: $input2)
+                    .keyboardType(.numberPad)
+            }
+            
+            HStack {
                 CircleShadowButton(
                     icon: "plus.circle.fill",
                     iconColor: .white,
@@ -53,16 +56,16 @@ struct CalculatorView: View {
                     backgroundColor: Defs.darkPurpleColor,
                     size: 60
                 ) {
-                    result = divide(Int(input1) ?? 0, Int(input2) ?? 0)
+                    result = Int(divide(Int(input1) ?? 0, Int(input2) ?? 0))
                 }
-
             }
-
-            if let result = result {
-                Text("Result: \(result)")
-                    .font(.headline)
+            Form {
+                if let result = result {
+                    Text("Result: \(result)")
+                        .font(.headline)
+                }
             }
-        }
+        }.background(.white)
         .navigationTitle("Calculator")
     }
 
@@ -81,9 +84,9 @@ struct CalculatorView: View {
     
     
     
-    func divide(_ a: Int, _ b: Int) -> Int {
+    func divide(_ a: Int, _ b: Int) -> Float {
         if a != 0 ,b != 0 {
-            return a / b
+            return Float(a / b)
         }
         return 0
     }
